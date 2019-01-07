@@ -1,11 +1,15 @@
+@keyframes fade {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
 @font-face {
-  font-family: "IBM Plex Mono"; 
-  src: url(assets/ibm-plex-mono.woff), url(assets/ibm-plex-mono.woff); 
+  font-family: "IBM Plex Mono";
+  src: url(assets/ibm-plex-mono.woff), url(assets/ibm-plex-mono.woff);
 }
 
 @font-face {
-  font-family: "Young Serif"; 
-  src: url(assets/youngserif.woff2), url(assets/youngserif.woff); 
+  font-family: "Young Serif";
+  src: url(assets/youngserif.woff2), url(assets/youngserif.woff);
 }
 
 
@@ -14,51 +18,132 @@ body {
   font-size: 16px;
   line-height: 1.6;
   background-color: #fff;
-  color: #2a2a2a; 
+  color: #2a2a2a;
+
+  overflow-x: hidden;
 }
 
 
+body,
+html {
+  min-height: 100%;
+}
+
+/* if you want coming from the right, combine with translate(-240px, 0) */
+/* right: 0;  */
 
 nav {
-  /* because we always want it to be there no matter where scrolled on the page */
-  position: fixed; 
+  position: fixed;
   top: 0;
-  left: 0; 
+  left: 0;
   width: 240px;
-  height: 100vh; 
-  background-color: #00b98d; 
-  color: #fff; 
+  height: 100vh;
+  background-color: #00b98d;
+  color: #ffffff;
+
   font-family: "Young Serif";
-  font-size: 24px; 
-  /* makes the links go down the page */
-  display: flex; 
+  font-size: 24px;
+
+  display: flex;
   flex-direction: column;
   /* places links in the center of the page */
   justify-content: center;
+
+  transition: left 0.5s;
 }
 
 nav a {
   color: #fff;
-  text-decoration: none; 
-  margin: 5px 32px 5px 32px; 
-
+  text-decoration: none;
+  margin: 5px 32px 5px 32px;
 }
+
+ nav a:hover {
+   opacity: .7;
+   transition: transform 0.5s ease-in-out; 
+ }
 
 main {
   position: relative;
-  z-index: 1; 
-  background-color: white; 
+  z-index: 1;
+  background-color: white;
   /* covers the navigation */
-  min-height: 100vh; 
-
-
-
+  min-height: 100vh;
+  transition: transform 0.5s ease-in;
 }
-
 
 main.open {
-  transform: translate(240px, 0); 
+  transform: translate(240px, 0);
 }
 
+a.toggle-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 24px;
+  text-decoration: none;
+  color: #2a2a2a;
+  font-size: 18px; 
+}
 
+a.toggle-nav img {
+  margin: 0 10px 0 0;
+  vertical-align: middle;
+}
 
+section {
+  display: flex;
+  /* makes it go in the center */
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+section div {
+  width: 350px;
+}
+
+section div.content {
+  margin: 0 0 0 60px;
+}
+
+h1 {
+  font-family: "Young Serif";
+  font-size: 48px;
+  line-height: 1.2;
+}
+
+p {
+  margin: 20px 0 20px 0px;
+}
+
+a.button {
+  display: inline-block;
+  background-color: #00b98d;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 15px 10px 15px;
+  border-radius: 4px;
+}
+
+div.slides {
+  position: relative;
+  height: 475px;
+}
+
+div.slides img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* add some animation to the slideshow */
+  transition: transform 0.5s, box-shadow 0.5s; 
+}
+
+div.slides img:first-child {
+  z-index: 1;
+}
+
+div.slides:hover img {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+
+}

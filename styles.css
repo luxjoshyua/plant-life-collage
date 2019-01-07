@@ -56,4 +56,9 @@ main {
 }
 
 
+main.open {
+  transform: translate(240px, 0); 
+}
+
+
 
